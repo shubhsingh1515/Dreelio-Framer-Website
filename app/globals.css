@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Themeable Colors - Dreelio Inspired Light Blue Background */
-    --background: 220 25% 96%; /* Light blue-white background */
+    --background: #b1d9f7 /* Light blue-white background */
     --foreground: 220 13% 20%; /* Dark navy text */
 
     --muted: 220 15% 88%; /* Light gray */

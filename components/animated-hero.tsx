@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { Button } from "@/components/ui/button"
-import { Header } from "./header"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { Header } from "./header";
+import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export function AnimatedHero() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const imageWrapperRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null);
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
+  const cloudLeftRef = useRef<HTMLImageElement>(null);
+  const cloudRightRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const hero = heroRef.current
-    const img = imageWrapperRef.current
-    if (!hero || !img) return
+    const hero = heroRef.current;
+    const img = imageWrapperRef.current;
+    const cloudLeft = cloudLeftRef.current;
+    const cloudRight = cloudRightRef.current;
 
-    /** 🔥 IMAGE PARALLAX + SCALE ANIMATION LIKE DREELIO */
+    if (!hero || !img || !cloudLeft || !cloudRight) return;
+
+    /** 🔥 IMAGE PARALLAX + SCALE ANIMATION */
     gsap.fromTo(
       img,
-      {
-        scale: 1,
-        y: 0,
-        z: 0,
-        transformPerspective: 800,
-      },
+      { scale: 1, y: 0, z: 0, transformPerspective: 800 },
       {
         scale: 1.12,
         y: -150,
@@ -40,35 +40,78 @@ export function AnimatedHero() {
           scrub: 1.6,
         },
       }
-    )
+    );
 
-    /** OPTIONAL: Slight fade/slide in hero text */
+    /** ☁️ CLOUD PARALLAX — slow drifting movement */
+    gsap.to(cloudLeft, {
+      x: -60,
+      y: 20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.4,
+      },
+    });
+
+    gsap.to(cloudRight, {
+      x: 60,
+      y: 30,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.4,
+      },
+    });
+
+    /** Fade-in hero text */
     gsap.from(".hero-title, .hero-desc, .hero-buttons", {
       opacity: 0,
       y: 40,
       duration: 1.2,
       stagger: 0.2,
       ease: "power3.out",
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen bg-gradient-to-b from-[#E8F1F8] via-[#F5F8FB] to-[#EBD9CC] pt-20 px-4 overflow-hidden"
+      className="relative min-h-screen bg-gradient-to-b from-[#afd8f7] via-[#F5F8FB] to-[#EBD9CC] pt-20 px-4 overflow-hidden"
     >
-      <div className="absolute top-0 left-0 right-0 z-30">
+      {/* HEADER */}
+      {/* <div className="absolute top-0 left-0 right-0 z-30">
         <Header />
-      </div>
+      </div> */}
+
+      {/* ☁️ CLOUD LEFT */}
+      <img
+        ref={cloudLeftRef}
+        src="/images/cloud1.png" // ← replace path
+        alt="Cloud left"
+        className="absolute left-0 top-40 w-[260px] opacity-90 z-10 pointer-events-none"
+      />
+
+      {/* ☁️ CLOUD RIGHT */}
+      <img
+        ref={cloudRightRef}
+        src="/images/cloud2.png" // ← replace path
+        alt="Cloud right"
+        className="absolute right-0 top-52 w-[260px] opacity-90 z-10 pointer-events-none"
+      />
 
       {/* HERO TEXT */}
       <div className="max-w-5xl mx-auto relative z-20 text-center space-y-8 mt-8">
-        <div className=" text-6xl md:text-7xl font-semibold leading-tight">
+        <div className="hero-title text-6xl md:text-7xl font-semibold leading-tight">
           Run your freelance <br /> business like a pro
         </div>
 
         <p className="hero-desc text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          All-in-one platform for managing clients, projects, and payments without the chaos.
+          All-in-one platform for managing clients, projects, and payments
+          without the chaos.
         </p>
 
         <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center pt-6">
@@ -79,7 +122,10 @@ export function AnimatedHero() {
           </Link>
 
           <Link href="#features">
-            <Button variant="outline" className="px-8 py-6 text-base rounded-full">
+            <Button
+              variant="outline"
+              className="px-8 py-6 text-base rounded-full"
+            >
               See features
             </Button>
           </Link>
@@ -100,5 +146,5 @@ export function AnimatedHero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
