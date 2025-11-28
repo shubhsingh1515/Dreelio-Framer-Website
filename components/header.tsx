@@ -33,30 +33,30 @@ export function Header() {
   ];
 
   return (
-    <div className="sticky top-0 z-[9999] flex justify-center pointer-events-none ">
+    <div className="sticky top-0 z-[9999] flex justify-center w-full bg-transparent pointer-events-none">
       <motion.header
         animate={{
           width: scrolled ? "1000px" : "100%",
           backgroundColor: scrolled
-            ? "rgba(255,255,255,0.8)"
-            : "rgba(175,216,247,1)", // MATCH HERO COLOR at TOP
-          paddingTop: scrolled ? "0.8rem" : "1.2rem",
-          paddingBottom: scrolled ? "0.8rem" : "1.2rem",
+            ? "rgba(255,255,255,0.85)" // floating pill
+            : "rgba(175,216,247,1)", // hero background at top
+          paddingTop: scrolled ? "0.7rem" : "1.2rem",
+          paddingBottom: scrolled ? "0.7rem" : "1.2rem",
           borderRadius: scrolled ? "9999px" : "0px",
           marginTop: scrolled ? "0.5rem" : "0rem",
-          backdropFilter: scrolled ? "blur(20px)" : "blur(0px)",
+          backdropFilter: scrolled ? "blur(18px)" : "none",
           boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.08)" : "none",
           border: scrolled
-            ? "1px solid rgba(220,220,220,0.8)"
+            ? "1px solid rgba(230,230,230,0.8)"
             : "1px solid transparent",
         }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="flex items-center justify-between px-6 pointer-events-auto  w-full"
+        className="flex items-center justify-between px-6 pointer-events-auto"
       >
         {/* Logo */}
         <span className="text-foreground text-2xl font-black">Dreelio</span>
 
-        {/* Desktop menu */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-4">
           {navItems.map((item) => (
             <Link
@@ -69,7 +69,7 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA button */}
+        {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link href="/signup">
             <Button className="bg-[#1d1d1f] text-white px-6 py-2 rounded-full font-semibold shadow-md">
@@ -78,7 +78,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">

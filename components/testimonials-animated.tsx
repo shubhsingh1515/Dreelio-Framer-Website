@@ -1,19 +1,21 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { useRef, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function TestimonialsAnimated() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const trackRef = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const testimonials = [
     {
       quote:
         "As a fast-moving design team, we needed a tool that matched our pace. From client onboarding to getting paid, this just works clean, fast, and beautifully built.",
       author: "Leah Daniel",
-      role: "Design Ops Lead, teamwork",
+      role: "Design Ops Lead, Teamwork",
       initials: "LD",
     },
     {
@@ -30,69 +32,95 @@ export function TestimonialsAnimated() {
       role: "Art Director, Pentagram",
       initials: "AC",
     },
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+    {
+      quote:
+        "From proposal to payment, this tool has transformed our entire process. Our clients love the smooth experience.",
+      author: "Sofia Martinez",
+      role: "Founder, Creative Minds",
+      initials: "SM",
     },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+    {
+      quote:
+        "This platform has revolutionized our workflow and helped us scale quickly.",
+      author: "Liam O'Connor",
+      role: "CEO, Bright Ideas Agency",
+      initials: "LO",
     },
-  }
+  ];
+
+  // ⭐ GSAP infinite marquee effect
+  useEffect(() => {
+    if (!trackRef.current) return;
+
+    const track = trackRef.current;
+    const totalWidth = track.scrollWidth / 2;
+
+    gsap.to(track, {
+      x: -totalWidth,
+      duration: 30,
+      ease: "none",
+      repeat: -1,
+    });
+  }, []);
 
   return (
-    <section ref={ref} className="py-16 md:py-24 px-4 max-w-6xl mx-auto">
+    <section
+      ref={ref}
+      className="py-16 md:py-24 px-4 max-w-7xl mx-auto relative"
+    >
+      {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-          &ldquo;Dreelio is by far the best agency tool I have ever used&rdquo;
+          “Dreelio is by far the best agency tool I have ever used”
         </h2>
-        <p className="text-lg text-muted-foreground">From early-stage founders to established agencies</p>
+        <div className="flex justify-center">
+          <Avatar className="mr-3">
+            <AvatarFallback className="bg-gray-300">MP</AvatarFallback>
+          </Avatar>
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Martha Punla · VP Marketing, Meta
+        </p>
       </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="grid md:grid-cols-3 gap-6"
-      >
-        {testimonials.map((testimonial, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all"
-            whileHover={{ y: -5 }}
-          >
-            <p className="text-muted-foreground mb-6 leading-relaxed italic">&ldquo;{testimonial.quote}&rdquo;</p>
-            <div className="flex items-center gap-4">
-              <Avatar>
-                <AvatarFallback className="bg-blue-200 text-foreground font-semibold">
-                  {testimonial.initials}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="font-semibold text-foreground">{testimonial.author}</p>
-                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+      {/* Fade Mask (Left & Right) */}
+      <div className="pointer-events-none absolute inset-0 z-20">
+        <div className="absolute left-0 top-0 h-full w-40 bg-gradient-to-r from-white via-white/80 to-transparent" />
+        <div className="absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-white via-white/80 to-transparent" />
+      </div>
+
+      {/* Marquee Track */}
+      <div className="overflow-hidden w-full">
+        <div ref={trackRef} className="flex gap-6 w-max">
+          {/* Duplicate for seamless loop */}
+          {[...testimonials, ...testimonials].map((t, i) => (
+            <motion.div
+              key={i}
+              className="bg-white w-[350px] shrink-0 p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
+            >
+              <p className="text-muted-foreground mb-6 leading-relaxed italic">
+                “{t.quote}”
+              </p>
+              <div className="flex items-center gap-4">
+                <Avatar>
+                  <AvatarFallback className="bg-blue-200 font-semibold">
+                    {t.initials}
+                  </AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-semibold text-foreground">{t.author}</p>
+                  <p className="text-sm text-muted-foreground">{t.role}</p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
-  )
+  );
 }

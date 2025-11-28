@@ -13,6 +13,7 @@ import { FooterSection } from "@/components/footer-section";
 import StackSlider from "@/components/StackSlider";
 import { Header } from "@/components/header";
 import HorizontalScrollSection from "@/components/horizontal-scroll-section";
+import { FAQSection } from "@/components/faq-section";
 
 export default function LandingPage() {
   return (
@@ -32,6 +33,7 @@ export default function LandingPage() {
         <PricingSectionDreelio />
         <BlogSection />
         <CommunitySection />
+        <FAQSection />
         <CTASection />
         <FooterSection />
       </div>

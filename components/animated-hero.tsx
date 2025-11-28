@@ -106,27 +106,47 @@ export function AnimatedHero() {
       {/* HERO TEXT */}
       <div className="max-w-5xl mx-auto relative z-20 text-center space-y-8 mt-8">
         <div className="hero-title text-6xl md:text-7xl font-semibold leading-tight">
-          Run your freelance <br /> business like a pro
+          Monitor Every Conversation <br />
+          That Matters to Your SaaS
         </div>
 
         <p className="hero-desc text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          All-in-one platform for managing clients, projects, and payments
-          without the chaos.
+          Track keywords, community discussions, and competitor mentions across
+          Reddit, Hacker News, Slack groups, Twitter, Discord, and niche forums
+          — all from one dashboard.
         </p>
 
         <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center pt-6">
+          {/* Primary Button */}
           <Link href="/signup">
-            <Button className="bg-secondary text-secondary-foreground px-8 py-6 text-base font-bold rounded-full">
-              Try Dreelio free
+            <Button
+              className="
+        px-8 py-6 text-base font-bold rounded-full
+       bg-black
+        text-white shadow-md
+        transition-all duration-300 ease-out
+        hover:shadow-xl hover:bg-white hover:text-black hover:scale-[1.05] hover:border hover:border-black
+        active:scale-[0.98]
+      "
+            >
+              Start Tracking for Free
             </Button>
           </Link>
 
+          {/* Outline Button */}
           <Link href="#features">
             <Button
               variant="outline"
-              className="px-8 py-6 text-base rounded-full"
+              className="
+        px-8 py-6 text-base rounded-full
+        border-2 border-gray-300 text-gray-700
+        transition-all duration-300 ease-out
+        hover:border-[#090909] hover:text-[#121212]
+        hover:bg-[#5B7CFF]/10 hover:scale-[1.05]
+        active:scale-[0.98]
+      "
             >
-              See features
+              See Live Demo
             </Button>
           </Link>
         </div>

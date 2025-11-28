@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 export function ProjectManagementSection() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const projects = [
     {
@@ -38,27 +38,27 @@ export function ProjectManagementSection() {
       clients: ["client6"],
       assigned: ["user2", "user4"],
     },
-  ]
+  ];
 
   const features = [
     { label: "Tasks", icon: "≡" },
     { label: "Time tracking", icon: "⏱" },
     { label: "Timesheets", icon: "≡" },
     { label: "Reports", icon: "📊" },
-  ]
+  ];
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "High":
-        return "text-green-600"
+        return "text-green-600";
       case "Medium":
-        return "text-yellow-600"
+        return "text-yellow-600";
       case "Low":
-        return "text-red-600"
+        return "text-red-600";
       default:
-        return "text-gray-600"
+        return "text-gray-600";
     }
-  }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,7 +68,7 @@ export function ProjectManagementSection() {
         staggerChildren: 0.08,
       },
     },
-  }
+  };
 
   const rowVariants = {
     hidden: { opacity: 0, x: -40 },
@@ -77,7 +77,7 @@ export function ProjectManagementSection() {
       x: 0,
       transition: { duration: 0.6, ease: "easeOut" },
     },
-  }
+  };
 
   return (
     <section ref={ref} className="py-20 md:py-32 px-4 max-w-7xl mx-auto">
@@ -87,13 +87,16 @@ export function ProjectManagementSection() {
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <p className="text-blue-600 font-semibold text-sm mb-4 uppercase tracking-widest">Project Management</p>
+        <p className="text-blue-600 font-semibold text-sm mb-4 uppercase tracking-widest">
+          Project Management
+        </p>
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
           Keep every project moving forward
         </h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Plan, assign, and deliver your work - all in one place. With smart task tracking, deadlines, and real-time
-          progress, you stay organized and clients stay confident.
+          Plan, assign, and deliver your work - all in one place. With smart
+          task tracking, deadlines, and real-time progress, you stay organized
+          and clients stay confident.
         </p>
       </motion.div>
 
@@ -101,9 +104,13 @@ export function ProjectManagementSection() {
         {/* Left side - Project Table Card */}
         <motion.div
           initial={{ opacity: 0, x: -40, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -40, scale: 0.95 }}
+          animate={
+            isInView
+              ? { opacity: 1, x: 0, scale: 1 }
+              : { opacity: 0, x: -40, scale: 0.95 }
+          }
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          className="bg-gradient-to-br from-blue-400 to-blue-500 rounded-3xl p-6 shadow-2xl"
+          className="bg-gradient-to-br from-[#95c6f6] to-[#f8e3d0] rounded-3xl p-6 shadow-2xl"
         >
           <div className="bg-white rounded-2xl p-6 space-y-4">
             <div className="flex items-center justify-between">
@@ -125,11 +132,17 @@ export function ProjectManagementSection() {
             <div className="space-y-2 max-h-80 overflow-y-auto">
               <div className="pb-3 border-b border-gray-200">
                 <div className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                  <span>▼</span> Ongoing <span className="text-gray-400">5</span>
+                  <span>▼</span> Ongoing{" "}
+                  <span className="text-gray-400">5</span>
                 </div>
               </div>
 
-              <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-2">
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="space-y-2"
+              >
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
@@ -138,9 +151,15 @@ export function ProjectManagementSection() {
                     whileHover={{ x: 4 }}
                   >
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">{project.name}</p>
+                      <p className="text-sm font-medium text-gray-900">
+                        {project.name}
+                      </p>
                     </div>
-                    <span className={`text-xs font-semibold ${getPriorityColor(project.priority)}`}>
+                    <span
+                      className={`text-xs font-semibold ${getPriorityColor(
+                        project.priority
+                      )}`}
+                    >
                       {project.priority}
                     </span>
                     <div className="flex items-center gap-1">
@@ -162,13 +181,15 @@ export function ProjectManagementSection() {
 
               <div className="pt-3 border-t border-gray-200">
                 <div className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                  <span>▼</span> In Review <span className="text-gray-400">8</span>
+                  <span>▼</span> In Review{" "}
+                  <span className="text-gray-400">8</span>
                 </div>
               </div>
 
               <div className="pt-3 border-t border-gray-200">
                 <div className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                  <span>▼</span> Completed <span className="text-gray-400">12</span>
+                  <span>▼</span> Completed{" "}
+                  <span className="text-gray-400">12</span>
                 </div>
               </div>
             </div>
@@ -183,13 +204,16 @@ export function ProjectManagementSection() {
           className="space-y-8"
         >
           <div>
-            <p className="text-blue-600 font-semibold text-sm mb-4 uppercase tracking-widest">Project Management</p>
+            <p className="text-blue-600 font-semibold text-sm mb-4 uppercase tracking-widest">
+              Project Management
+            </p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
               Keep every project moving forward
             </h2>
             <p className="text-lg text-muted-foreground">
-              Plan, assign, and deliver your work - all in one place. With smart task tracking, deadlines, and real-time
-              progress, you stay organized and clients stay confident.
+              Plan, assign, and deliver your work - all in one place. With smart
+              task tracking, deadlines, and real-time progress, you stay
+              organized and clients stay confident.
             </p>
           </div>
 
@@ -206,18 +230,27 @@ export function ProjectManagementSection() {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)" }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)",
+                }}
                 className="p-4 border-2 border-gray-100 rounded-xl hover:border-blue-200 transition-all cursor-pointer bg-white"
               >
-                <div className="text-2xl mb-2">{feature.icon}</div>
-                <p className="font-semibold text-foreground text-sm">{feature.label}</p>
+                <div className="flex items-center gap-2 text-2xl mb-2">
+                  {feature.icon}
+                  <p className="font-semibold text-foreground text-base">
+                    {feature.label}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,17 +1,18 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export function BlogSection() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const blogPosts = [
     {
       title: "How to start a 100k creative agency in 2025",
-      excerpt: "Learn how to kickstart your journey into agency ownership with our comprehensive guide.",
+      excerpt:
+        "Learn how to kickstart your journey into agency ownership with our comprehensive guide.",
       category: "Must Read",
       author: "Dhyna Phils",
       role: "Head of Marketing",
@@ -42,7 +43,15 @@ export function BlogSection() {
       featured: false,
       image: "/billable-hours.jpg",
     },
-  ]
+    {
+      title: "Effective Client Communication Strategies",
+      category: "Client Relations",
+      author: "Liam Smith",
+      role: "Client Success Manager",
+      featured: false,
+      image: "/creative-agency.jpg",
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -52,7 +61,7 @@ export function BlogSection() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -61,7 +70,7 @@ export function BlogSection() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   return (
     <section ref={ref} className="py-20 md:py-32 px-4 max-w-6xl mx-auto">
@@ -104,11 +113,17 @@ export function BlogSection() {
               />
             </div>
             <div className="p-6">
-              <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-2">{post.category}</p>
+              <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-2">
+                {post.category}
+              </p>
               <h3 className="text-lg font-bold text-foreground mb-4 group-hover:text-blue-600 transition-colors">
                 {post.title}
               </h3>
-              {post.excerpt && <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>}
+              {post.excerpt && (
+                <p className="text-sm text-muted-foreground mb-4">
+                  {post.excerpt}
+                </p>
+              )}
               <div className="flex items-center justify-between">
                 <div className="text-sm">
                   <p className="font-semibold text-foreground">{post.author}</p>
@@ -121,5 +136,5 @@ export function BlogSection() {
         ))}
       </motion.div>
     </section>
-  )
+  );
 }
