@@ -58,62 +58,62 @@ export default function HorizontalScrollSection() {
       image: "/images/scroll3.jpg",
       link: "#whitepaper",
     },
-    // {
-    //   id: 4,
-    //   title: "Sales strategy & optimization",
-    //   description:
-    //     "Transform your sales process with data-driven strategies that close deals",
-    //   image: "/product/Screenshot4.png",
-    //   link: "#sales-strategy",
-    // },
-    // {
-    //   id: 5,
-    //   title: "LinkedIn ads campaign",
-    //   description:
-    //     "Reach your ideal customers where they make business decisions",
-    //   image: "/product/Screenshot5.png",
-    //   link: "#linkedin-campaign",
-    // },
-    // {
-    //   id: 6,
-    //   title: "Whitepaper marketing",
-    //   description: "Establish thought leadership and generate qualified leads",
-    //   image: "/product/Screenshot6.png",
-    //   link: "#whitepaper-marketing",
-    // },
-    // {
-    //   id: 7,
-    //   title: "Nurture leads effectively",
-    //   description:
-    //     "Automated workflows that guide prospects through your funnel",
-    //   image: "/product/Screenshot7.png",
-    //   link: "#nurture-effectively",
-    // },
-    // {
-    //   id: 8,
-    //   title: "LinkedIn advertising",
-    //   description:
-    //     "Maximize ROI with targeted campaigns on the world's largest professional network",
-    //   image: "/product/Screenshot8.png",
-    //   link: "#linkedin-advertising",
-    // },
-    // {
-    //   id: 9,
+    {
+      id: 4,
+      title: "Sales strategy & optimization",
+      description:
+        "Transform your sales process with data-driven strategies that close deals",
+      image: "/product/Screenshot4.png",
+      link: "#sales-strategy",
+    },
+    {
+      id: 5,
+      title: "LinkedIn ads campaign",
+      description:
+        "Reach your ideal customers where they make business decisions",
+      image: "/product/Screenshot5.png",
+      link: "#linkedin-campaign",
+    },
+    {
+      id: 6,
+      title: "Whitepaper marketing",
+      description: "Establish thought leadership and generate qualified leads",
+      image: "/product/Screenshot6.png",
+      link: "#whitepaper-marketing",
+    },
+    {
+      id: 7,
+      title: "Nurture leads effectively",
+      description:
+        "Automated workflows that guide prospects through your funnel",
+      image: "/product/Screenshot7.png",
+      link: "#nurture-effectively",
+    },
+    {
+      id: 8,
+      title: "LinkedIn advertising",
+      description:
+        "Maximize ROI with targeted campaigns on the world's largest professional network",
+      image: "/product/Screenshot8.png",
+      link: "#linkedin-advertising",
+    },
+    {
+      id: 9,
 
-    //   title: "Sales funnel optimization",
-    //   description:
-    //     "Identify bottlenecks and accelerate conversions with proven techniques",
-    //   image: "/product/Screenshot9.png",
-    //   link: "#sales-funnel",
-    // },
-    // {
-    //   id: 10,
-    //   title: "Comprehensive lead generation",
-    //   description:
-    //     "End-to-end solutions that fill your pipeline with high-quality prospects",
-    //   image: "/product/Screenshot10.png",
-    //   link: "#lead-generation",
-    // },
+      title: "Sales funnel optimization",
+      description:
+        "Identify bottlenecks and accelerate conversions with proven techniques",
+      image: "/product/Screenshot9.png",
+      link: "#sales-funnel",
+    },
+    {
+      id: 10,
+      title: "Comprehensive lead generation",
+      description:
+        "End-to-end solutions that fill your pipeline with high-quality prospects",
+      image: "/product/Screenshot10.png",
+      link: "#lead-generation",
+    },
   ];
 
   const handleCardClick = (link: string) => {
