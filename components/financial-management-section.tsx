@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { XAxis, YAxis, ResponsiveContainer, Area, AreaChart } from "recharts";
 import { Button } from "./ui/button";
+import { FileText, Wallet, LineChart, Link2 } from "lucide-react";
 
 export function FinancialManagementSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,10 +41,10 @@ export function FinancialManagementSection() {
   ];
 
   const features = [
-    { label: "Invoicing", icon: "💼" },
-    { label: "Budgets", icon: "⚙️" },
-    { label: "Forecasting", icon: "📈" },
-    { label: "Integrations", icon: "🔗" },
+    { label: "Invoicing", icon: FileText },
+    { label: "Budgets", icon: Wallet },
+    { label: "Forecasting", icon: LineChart },
+    { label: "Integrations", icon: Link2 },
   ];
 
   return (
@@ -57,13 +58,17 @@ export function FinancialManagementSection() {
           <p className="text-slate-500 font-semibold text-xs mb-6 uppercase tracking-widest">
             Financial Management
           </p>
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Track income, get paid, stress less
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            Stay on top of your revenue with real-time activity tracking
           </h2>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            Create branded invoices, log expenses, and keep tabs on your
-            earnings. Whether you bill hourly or per project, everything's
-            automated and tax-friendly.
+            Your latest activity shows steady engagement across your ongoing
+            leads. From SaaS marketing insights to community-driven tasks,
+            everything you’re working on updates instantly—giving you a clear
+            view of performance, progress, and earnings. With automated
+            tracking, expense logging, and smart financial tools, you always
+            know where your money is coming from and which tasks are performing
+            best.
           </p>
 
           <a
@@ -71,9 +76,13 @@ export function FinancialManagementSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors mb-6"
+            >
               Try Community Tracker free
-            </Button>
+            </motion.button>
           </a>
 
           <motion.div
@@ -86,10 +95,14 @@ export function FinancialManagementSection() {
               <motion.div
                 key={index}
                 variants={featureVariants}
-                className="flex items-center gap-3 p-4 rounded-lg hover:bg-slate-50 transition-colors"
+                className="p-4 border-2 border-gray-100 rounded-xl hover:border-blue-200 transition-all cursor-pointer bg-white"
               >
-                <span className="text-2xl">{feature.icon}</span>
-                <p className="font-semibold text-foreground">{feature.label}</p>
+                <div className="flex items-center gap-2 text-2xl mb-2">
+                  <feature.icon />
+                  <p className="font-semibold text-foreground text-base">
+                    {feature.label}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

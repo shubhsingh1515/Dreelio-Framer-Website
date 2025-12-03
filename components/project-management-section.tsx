@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { ListTodo, Timer, CalendarClock, BarChart } from "lucide-react";
 
 export function ProjectManagementSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -41,10 +42,10 @@ export function ProjectManagementSection() {
   ];
 
   const features = [
-    { label: "Tasks", icon: "≡" },
-    { label: "Time tracking", icon: "⏱" },
-    { label: "Timesheets", icon: "≡" },
-    { label: "Reports", icon: "📊" },
+    { label: "Tasks", icon: ListTodo },
+    { label: "Time tracking", icon: Timer },
+    { label: "Timesheets", icon: CalendarClock },
+    { label: "Reports", icon: BarChart },
   ];
 
   const getPriorityColor = (priority: string) => {
@@ -87,9 +88,6 @@ export function ProjectManagementSection() {
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <p className="text-blue-600 font-semibold text-sm mb-4 uppercase tracking-widest">
-          Project Management
-        </p>
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
           Keep every project moving forward
         </h2>
@@ -110,7 +108,6 @@ export function ProjectManagementSection() {
               : { opacity: 0, x: -40, scale: 0.95 }
           }
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-         
         >
           <img
             src="/images/project_manage.jpg"
@@ -209,16 +206,19 @@ export function ProjectManagementSection() {
           className="space-y-8"
         >
           <div>
-            <p className="text-blue-600 font-semibold text-sm mb-4 uppercase tracking-widest">
+            <p className="text-gray-400 font-semibold text-sm mb-4 uppercase tracking-widest">
               Project Management
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
-              Keep every project moving forward
+              Reddit is driving the strongest community results
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Plan, assign, and deliver your work - all in one place. With smart
-              task tracking, deadlines, and real-time progress, you stay
-              organized and clients stay confident.
+            <p className="text-lg text-muted-foreground mb-2">
+              Your community analytics show Reddit performing exceptionally
+              well. With a 77.5% AI Score, 20 total leads, and an efficiency
+              rating of 15.5, Reddit stands out as one of the most reliable
+              channels for generating high-quality engagement. Use these
+              insights to stay organized, improve performance, and maintain
+              client confidence.
             </p>
           </div>
           <a
@@ -226,13 +226,13 @@ export function ProjectManagementSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors"
-          >
-            Try Community Tracker free
-          </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors mt-2"
+            >
+              Try Community Tracker free
+            </motion.button>
           </a>
 
           <motion.div className="grid grid-cols-2 gap-4">
@@ -251,7 +251,7 @@ export function ProjectManagementSection() {
                 className="p-4 border-2 border-gray-100 rounded-xl hover:border-blue-200 transition-all cursor-pointer bg-white"
               >
                 <div className="flex items-center gap-2 text-2xl mb-2">
-                  {feature.icon}
+                  <feature.icon />
                   <p className="font-semibold text-foreground text-base">
                     {feature.label}
                   </p>

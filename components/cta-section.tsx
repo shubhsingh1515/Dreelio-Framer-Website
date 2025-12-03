@@ -144,11 +144,15 @@ export function CTASection() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Link href="/signup">
+          <a
+            href="https://calendly.com/adarsh-ilu/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-6 text-lg rounded-full font-semibold shadow-lg hover:shadow-xl transition-all">
               Try for Free
             </Button>
-          </Link>
+          </a>
           <Link href="#features">
             <Button
               variant="outline"
